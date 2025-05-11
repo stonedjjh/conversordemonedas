@@ -12,7 +12,7 @@ import java.net.http.HttpResponse;
 
 public class ConexionApi {
     private String baseUrl = "https://v6.exchangerate-api.com/v6/";
-    private String key ="9fc651ac9014487092adfbc3";
+    private String key ="";
 
     public String convertir(String moneda1, String moneda2, float monto){
         String url = this.baseUrl+this.key+"/pair/"+moneda1+"/"+moneda2;
