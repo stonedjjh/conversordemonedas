@@ -12,31 +12,20 @@ import java.net.http.HttpResponse;
 
 public class ConexionApi {
     private String baseUrl = "https://v6.exchangerate-api.com/v6/";
-    private String key ="9fc651ac9014487092adfbc3";
+    private final String key = System.getenv("EXCHANGE_RATE_API_KEY");
+    private HttpClient client = HttpClient.newHttpClient();
 
-    public String convertir(String moneda1, String moneda2, float monto){
-        String url = this.baseUrl+this.key+"/pair/"+moneda1+"/"+moneda2;
-        Gson gson = new GsonBuilder()
-                .setFieldNamingPolicy(FieldNamingPolicy.UPPER_CAMEL_CASE)
-                .setPrettyPrinting()
-                .create();
-
+    public String convertir(String moneda1, String moneda2, double monto, Gson gson){
+        String url = this.baseUrl+this.key+"/pair/"+moneda1.toUpperCase()+"/"+moneda2.toUpperCase();
         try {
-            HttpClient client = HttpClient.newHttpClient();
             HttpRequest request = HttpRequest.newBuilder()
                     .uri(URI.create(url))
                     .build();
-            HttpResponse<String> response = client
+            HttpResponse<String> response = this.client
                     .send(request, HttpResponse.BodyHandlers.ofString());
 
             JsonObject jsonObject = gson.fromJson(response.body(), JsonObject.class);
-
-            // Acceder al valor de "conversion_rate"
             double conversionRate = jsonObject.get("conversion_rate").getAsDouble();
-            //String conversionRate = gson.fromJson(resultado, String.class);
-            System.out.println(conversionRate);
-
-            //return response.body();
             return monto + " " + moneda1 + " * " + conversionRate + " = " + conversionRate * monto + " " + moneda2;
         } catch (Exception e) {
             throw new RuntimeException(e);

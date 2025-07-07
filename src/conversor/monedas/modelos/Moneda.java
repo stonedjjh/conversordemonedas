@@ -1,4 +1,4 @@
-package conversor.monedas.monedas;
+package conversor.monedas.modelos;
 
 public class  Moneda{
     private String codigoMoneda;
@@ -11,32 +11,9 @@ public class  Moneda{
         this.pais = pais;
     }
 
-
-
     // Getters para cada atributo (opcional si necesitas acceder a ellos)
     public String getCodigoMoneda() {
         return codigoMoneda;
-    }
-
-    public String getNombreMoneda() {
-        return nombreMoneda;
-    }
-
-    public String getpais() {
-        return pais;
-    }
-
-    // Setters para cada atributo (opcional si necesitas modificarlos)
-    public void setcodigoMoneda(String codigoMoneda) {
-        this.codigoMoneda = codigoMoneda;
-    }
-
-    public void setnombreMoneda(String nombreMoneda) {
-        this.nombreMoneda = nombreMoneda;
-    }
-
-    public void setpais(String pais) {
-        this.pais = pais;
     }
 
     @Override

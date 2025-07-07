@@ -1,4 +1,4 @@
-package conversor.monedas.monedas;
+package conversor.monedas.modelos;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Monedas {
-    private String rutaArchivo = "src/monedas.txt"; // Reemplaza con la ruta real de tu archivo
+    private String rutaArchivo = "src/monedas.txt";
     private File archivo = new File(this.rutaArchivo);
     private Scanner scanner = null;
     private List<Moneda> monedas = new ArrayList<>();
@@ -25,14 +25,14 @@ public class Monedas {
             System.err.println("Error: El archivo no fue encontrado: " + e.getMessage());
         } finally {
             if (scanner != null) {
-                scanner.close(); // Es importante cerrar el Scanner para liberar recursos
+                scanner.close();
             }
         }
     }
 
     public String buscar(String codigoMoneda) {
         for (Moneda moneda : this.monedas) {
-            if (moneda.getCodigoMoneda().equals(codigoMoneda)) {
+            if (moneda.getCodigoMoneda().equalsIgnoreCase(codigoMoneda)) {
                 return moneda.toString(); // Retorna el objeto Moneda si se encuentra una coincidencia
             }
         }
@@ -53,7 +53,6 @@ public class Monedas {
             }
 
         }
-
         // Imprimimos la cadena resultante (eliminando el espacio extra al final si lo hay)
         if (sb.length() > 0) {
             System.out.println(sb.toString().trim());
