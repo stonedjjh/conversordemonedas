@@ -1,8 +1,47 @@
-# Default ignored files
-/shelf/
-/workspace.xml
-# Environment-dependent path to Maven home directory
-/mavenHomeManager.xml
+# Compiled class file
+*.class
 
-/src/conversor/monedas/conexion/ConexionApi.java
-src/conversor/monedas/conexion/ConexionApi.java
+# Log files
+*.log
+*.logs
+
+# Package Files #
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Javadoc
+/doc/
+/docs/api/ # Si generas javadoc en /docs/api
+
+# IDEA
+.idea/
+*.iws
+*.iml
+*.ipr
+*.classpath
+*.project
+.settings/
+.idea_modules/
+
+
+
+# OSX
+.DS_Store
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# VS Code
+.vscode/
+
+# Custom for your project
+# Asegurate de incluir aqui la carpeta donde se guarda tu log.txt o peliculas.json si esta fuera de src/
+# Por ejemplo:
+log.txt
